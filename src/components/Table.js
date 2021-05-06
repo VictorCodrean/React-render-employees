@@ -2,8 +2,8 @@ import React from 'react'
 
 function Table() {
     return (
-        <table class="table table-success table-striped">
-            <thead class="table-dark">
+        <table className="table table-success table-striped">
+            <thead className="table-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">First</th>

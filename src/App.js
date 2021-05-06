@@ -1,13 +1,13 @@
-import './App.css';
-import Setup from './Setup';
+// import Setup from './Setup';
 import Navbar from './components/Navbar';
 import Table from './components/Table';
+import EmployeesSearchResults from './components/EmployeesSearchResults'
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Setup />
+      <EmployeesSearchResults />
       <Table />
     </div>
   )
