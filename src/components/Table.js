@@ -33,6 +33,7 @@ function Table(props) {
                 ))}
             </tbody>
         </table >
+        
     )
 }
 

@@ -15,7 +15,7 @@ function Usage(props) {
                     Sort the table data onClick on the columns with sortIcons
                                             </li>
             </ul>
-
+           
         </>
     )
 }
