@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import Table from "./Table"
 import API from "../utils/API"
+import Navbar from "../components/Navbar"
+import Usage from "../components/Usage"
 
 class EmployeesSearchResults extends Component {
     state = {
         employees: [],
-        filteredByName: []
+        filteredByName: [],
+        onSortByName: true,
+        onSortByAge: true
     };
 
     componentDidMount() {
@@ -18,7 +22,7 @@ class EmployeesSearchResults extends Component {
                     employees: filtered,
                     filteredByName: filtered
                 })
-                // console.log(filtered)
+                console.log(filtered)
             })
             .catch(err => console.log(err));
     }
@@ -32,19 +36,88 @@ class EmployeesSearchResults extends Component {
         this.setState({ filteredByName: employees })
     }
 
+    sortByName = () => {
+        this.setState({
+            filteredByName: this.state.filteredByName.sort((a, b) => {
+
+                if (this.state.onSortByName) {
+                    if (a.name.first < b.name.first) {
+                        return -1
+                    }
+                    if (a.name.first > b.name.first) {
+                        return 1
+                    }
+                    return 0
+                } else {
+                    if (a.name.first < b.name.first) {
+                        return 1
+                    }
+                    if (a.name.first > b.name.first) {
+                        return -1
+                    }
+                    return 0
+                }
+            }),
+            onSortByName: !this.state.onSortByName
+        })
+    }
+
+
+    sortByAge = () => {
+        this.setState({
+            filteredByName: this.state.filteredByName.sort((a, b) => {
+
+                if (this.state.onSortByAge) {
+                    if (a.dob.age < b.dob.age) {
+                        return -1
+                    }
+                    if (a.dob.age > b.dob.age) {
+                        return 1
+                    }
+                    return 0
+                } else {
+                    if (a.dob.age < b.dob.age) {
+                        return 1
+                    }
+                    if (a.dob.age > b.dob.age) {
+                        return -1
+                    }
+                    return 0
+                }
+            }),
+            onSortByAge: !this.state.onSortByAge
+        })
+    }
+
+
     render() {
         return (
-            <div className="m-5">
-                <input className="" onChange={this.handleInputChange} placeholder="filter by name">
+            <>
+                <Navbar
+                    handleInputChange={this.handleInputChange}
+                />
+                <main className="container">
+                    <div className="row mt-3">
+                        {this.state.filteredByName.length > 0 ?
+                            (
+                                <>
+                                    <div className="col-sm-12 col-md-3">
+                                        <Usage />
+                                    </div>
 
-                </input>
-                {this.state.filteredByName.length > 0 ? (
+                                    <div className="col-sm-12 col-md-9">
+                                        <Table
+                                            employees={this.state.filteredByName}
+                                            sortByName={this.sortByName}
+                                            sortByAge={this.sortByAge} />
 
-                    <Table employees={this.state.filteredByName} />
-                ) : (
-                    <h2>No Results</h2>
-                )}
-            </div>
+                                    </div>
+                                </>
+                            ) : (<h2>No Results</h2>)}
+                    </div>
+                </main>
+
+            </>
         )
     }
 }

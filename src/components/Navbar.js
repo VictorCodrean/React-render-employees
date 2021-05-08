@@ -1,11 +1,28 @@
 import React from "react";
 
-function Navbar() {
+function Navbar(props) {
     return (
-        <nav className="mb-3 navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/">
-                Navbar
-            </a>
+        <nav className="navbar navbar-light bg-light py-3">
+            <div className="container-fluid">
+                <p className="display-5 text-decoration-none link-dark">Employee Directory</p>
+
+                <form className="d-flex mx-5 ">
+                    <div className="input-group">
+                      
+                            <span className="input-group-text">Filter by name</span>
+                      
+                        <input
+                            onChange={props.handleInputChange}
+                            className="form-control"
+                            type="text"
+                            placeholder="By name"
+                            aria-label="name"
+                        />
+                    </div>
+
+
+                </form>
+            </div>
         </nav>
     );
 }
