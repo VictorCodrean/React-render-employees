@@ -5,7 +5,7 @@ function Usage(props) {
         <>
             <h5>Usage:</h5>
             <p>
-                Given a table of random users generated from the <a href="https://randomuser.me/" target="_blank">Random User API.</a>
+                Given a table of random users generated from the <a href="https://randomuser.me/" rel="noopener">Random User API.</a>
             </p>
             <ul className="list-group">
                 <li className="list-group-item">
@@ -15,7 +15,7 @@ function Usage(props) {
                     Sort the table data onClick on the columns with sortIcons
                                             </li>
             </ul>
-           
+
         </>
     )
 }
