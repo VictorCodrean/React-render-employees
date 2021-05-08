@@ -8,8 +8,8 @@ function Table(props) {
             <thead className="table-dark">
                 <tr>
                     <th scope="col">#Id</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
                     <th scope="col">Email</th>
                 </tr>
             </thead>
