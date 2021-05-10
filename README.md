@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# Employee directory - [App live on](https://react-render-employees.herokuapp.com/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of contents
+- [Description](#Description)
+- [User Story](#User/Story)
+- [Usage](#Usage)
+- [Framework HTML/JS](#Framework)
+- [Credits](#Credits)
 
-## Available Scripts
+## Illustration
 
-In the project directory, you can run:
+![sampleReadme](./public/pictures/Illustration.gif)
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+An app that uses [Random User Api](https://randomuser.me/) to render users data as employees to simulate an empolyee directory.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## User/Story  
+```md
 
-### `npm test`
+ As a user, I want to be able to view my entire employee directory at once so that I have quick access to their information. (and filter them by name; sort by name or age)
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+* Visit  [Employee directory](https://react-render-employees.herokuapp.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Base options
+  * Refresh the app 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  * On the right side of the navbar you can filter users by name
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  * 
+If you click on the table headers with arrow icons that will triger the sort(by name or age) both ways...
+## Framework
 
-### `npm run eject`
+### React
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+* Creating react app
+    ```
+        npx create-react-app <name>
+    ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* AXIOS dependencie to fetch API calls
+    ```
+        const API = {
+            search: function () {
+            return axios.get(BASEURL);
+            }
+        }
+        export default API
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    ```
+        componentDidMount() {
+            API.search()
+                .then((res) => {
+                    console.log(res)
+                    ...
+                })
+                .catch(err => console.log(err))
+        }
+    ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* Classes
+    ```
+    class EmployeesSearchResults extends Component {
+      state = {
+          ...
+      }
+    }
 
-## Learn More
+    this.setState({
+        employees: filtered,
+        filteredByName: filtered
+    })
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* returning the necessary data
+    ```
+        render() {
+            return(
+                <>
+                <Navbar />
+                ...
+                <Table
+                    employees={this.state....}
+                    sortByName={this...}
+                    sortByAge={this....} 
+                />
+                </>
+            )
+        }
+    ```
+* rendering with the imported data
+    ```
+        function Table(props) {
+            ...
+            <tbody>
+            {props.employees.map(employee => (
+                ...
+                anything you want to return
+                remember employee it's an object coming from API call so you can plya with it
+            ))}
+        }
+    ```
 
-### Code Splitting
+    
+## Credits
+ * - [Axios npm](https://www.npmjs.com/package/axios)
+ * - [Create react](https://reactjs.org/docs/create-a-new-react-app.html#create-react-app) 
+ * - UW curiculum
+ * - [Heroku-devcenter](https://blog.heroku.com/deploying-react-with-zero-configuration) - for deployment a react app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Directory
+* [GitHub Source](https://github.com/VictorCodrean/react-render-employees)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## App link
+Victor Codrean    
+*  [react-employee-directory/app link:](https://react-render-employees.herokuapp.com/)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Asking me any questions:
 
-### Advanced Configuration
+<a href="mailto:codreanvictor@gmail.com" style="text-decoration:none"><img height="20" src = "https://img.shields.io/badge/Gmail-c14438?&style=for-the-badge&logo=gmail&logoColor=white&style=plastic"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+[<img height="20" src="https://img.shields.io/badge/-GitHub-black.svg?&style=for-the-badge&logo=github&logoColor=white&style=plastic"/>](https://github.com/VictorCodrean)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
