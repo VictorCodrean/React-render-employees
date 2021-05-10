@@ -16,9 +16,9 @@
 An app that uses [Random User Api](https://randomuser.me/) to render users data as employees to simulate an empolyee directory.
 
 ## User/Story  
-```md
-
- As a user, I want to be able to view my entire employee directory at once so that I have quick access to their information. (and filter them by name; sort by name or age)
+```
+ As a user, I want to be able to view my entire employee directory at once so that
+ I have quick access to their information. (and filter them by name; sort by name or age)
 ```
 
 ## Usage
@@ -30,8 +30,7 @@ An app that uses [Random User Api](https://randomuser.me/) to render users data 
 
   * On the right side of the navbar you can filter users by name
 
-  * 
-If you click on the table headers with arrow icons that will triger the sort(by name or age) both ways...
+  * If you click on the table headers with arrow icons that will triger the sort(by name or age) both ways...
 ## Framework
 
 ### React
